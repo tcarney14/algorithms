@@ -1,28 +1,4 @@
 import matplotlib.pyplot as plt
-import numpy as np
-import itertools
-
-def convex_hull(points):
-    x_min = np.Inf, 0
-    y_min = 0, np.Inf
-
-    x_max = np.NINF, 0
-    y_max = 0, np.NINF
-
-    for point in points:
-        if point[0] < x_min[0]:
-            x_min = point
-
-        if point[0] > x_max[0]:
-            x_max = point
-
-        if point[1] < y_min[1]:
-            y_min = point
-        
-        if point[1] > y_max[1]:
-            y_max = point
-    
-    return [x_min, x_max, y_min, y_max]
 
 def convex_hull_brute(points):
     hull = []
