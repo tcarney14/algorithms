@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+from random import randint
 
 def convex_hull_brute(points):
     hull = []
@@ -21,7 +22,9 @@ def convex_hull_brute(points):
                     signs.append(False)
             
             # Result from count matches with result from len()
-            in_hull = signs.count(signs[0]) == len(signs)
+            in_hull = False
+            if len(signs) > 0:
+                in_hull = signs.count(signs[0]) == len(signs)
             if in_hull:
                 hull.append((points[i], points[j]))
     
@@ -35,12 +38,12 @@ def plot_hull(points, hull):
         xs, ys = zip(*line)
         plt.plot(xs, ys)
 
-    plt.xlim((0, 10))
-    plt.ylim((0, 10))
     plt.show()
 
 if __name__ == "__main__":
-    points = [(4, 6), (3, 2), (6,6), (6,1), (2,9), (3, 7), (5, 3)]
+    points = []
+    for i in range(100):
+        points.append((randint(0,50), randint(0,50)))
 
     hull = convex_hull_brute(points)
     print(hull)
